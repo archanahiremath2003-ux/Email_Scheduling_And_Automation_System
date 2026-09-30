@@ -1,0 +1,35 @@
+=========================================================
+  EMAIL SCHEDULER - WINDOWS INSTALLATION & RUN GUIDE
+=========================================================
+
+PREREQUISITES:
+- Node.js installed (v18 or v20+ recommended). Download from https://nodejs.org/
+- No need to install Redis! A portable Windows version is already included in this project.
+- No need to install a database! It uses a local SQLite file by default.
+
+--- STEP 1: INITIAL SETUP (Run Once) ---
+1. Open PowerShell or Command Prompt in this exact folder.
+2. Create the environment file:
+   - Run: cd backend
+   - Run: Copy-Item .env.example .env
+   - Run: cd ..
+3. Install all dependencies and set up the database by running:
+   npm run setup
+
+--- STEP 2: RUN THE APPLICATION ---
+Whenever you want to start the app, open PowerShell in this main folder and run these two commands:
+
+1. Start the included Redis server (runs in the background):
+   npm run start:redis
+
+2. Start both the Backend and Frontend together:
+   npm run dev
+
+--- STEP 3: USE THE APP ---
+1. Open your web browser and go to: http://localhost:3000
+2. Click the "Demo Login (For Test)" button to instantly log in without needing a Google account.
+3. To view the live queue monitor, visit: http://localhost:5000/admin/queues
+
+--- HOW TO STOP ---
+- Press Ctrl + C in the terminal where you ran `npm run dev` to stop the backend and frontend.
+- Since Redis runs hidden in the background, it will stay running until you restart your PC, or you can manually close "redis-server.exe" from the Windows Task Manager.
